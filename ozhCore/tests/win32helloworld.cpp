@@ -5,7 +5,7 @@
  * Created on 2015-1-31, 20:03:37
  */
 
-#include "platform.hpp"
+#include <platform.hpp>
 #if defined(compile_windows_related)
 
 /** excerpt from http://www.cplusplus.com/forum/windows/34280/ **/

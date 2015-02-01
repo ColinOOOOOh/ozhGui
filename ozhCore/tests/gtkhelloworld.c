@@ -5,7 +5,7 @@
  * Created on Jan 31, 2015, 5:56:23 PM
  */
 
-#include "../platform.hpp"
+#include <platform.hpp>
 #include <stdlib.h>
 #if defined(compile_linux_related)
 #include <gtk/gtk.h>
@@ -26,7 +26,7 @@ int main(int argc,
 	return EXIT_SUCCESS;
 }
 #else
-int main()
+int main(){
 	return EXIT_SUCCESS;
 }
 #endif // compile_linux_related

@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=Cygwin_4.x-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -47,11 +47,11 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=`pkg-config gtk+-2.0 --cflags` 
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=`pkg-config gtk+-2.0 --cflags` 
+CXXFLAGS=`pkg-config gtk+-2.0 --cflags` 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -60,20 +60,20 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=`pkg-config gtk+-3.0 --libs`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f3
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+${TESTDIR}/TestFiles/f3: ${OBJECTFILES}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f3 ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
 ${OBJECTDIR}/src/main.o: nbproject/Makefile-${CND_CONF}.mk src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -I. -Iinclude  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -96,19 +96,19 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/win32helloworld.o ${OBJECTFILES:%.o=%_
 ${TESTDIR}/tests/gtkhelloworld.o: tests/gtkhelloworld.c 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config gtk+-2.0 --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/gtkhelloworld.o tests/gtkhelloworld.c
+	$(COMPILE.c) -g -Iinclude `pkg-config gtk+-2.0 --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/gtkhelloworld.o tests/gtkhelloworld.c
 
 
 ${TESTDIR}/tests/stdhelloworld.o: tests/stdhelloworld.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/stdhelloworld.o tests/stdhelloworld.cpp
+	$(COMPILE.cc) -g -I. -Iinclude -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/stdhelloworld.o tests/stdhelloworld.cpp
 
 
 ${TESTDIR}/tests/win32helloworld.o: tests/win32helloworld.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/win32helloworld.o tests/win32helloworld.cpp
+	$(COMPILE.cc) -g -I. -Iinclude -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/win32helloworld.o tests/win32helloworld.cpp
 
 
 ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp 
@@ -119,7 +119,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
+	    $(COMPILE.cc) -g -I. -Iinclude  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/main_nomain.o;\
 	fi
@@ -138,7 +138,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}
+	${RM} ${TESTDIR}/TestFiles/f3
 
 # Subprojects
 .clean-subprojects:
