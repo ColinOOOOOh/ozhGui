@@ -1,6 +1,7 @@
 /* 
  * File:   sdlhelloworld.cpp
  * Author: wen, chifeng
+ *	   Ou, Zhenghui
  *
  * Created on 2015-1-31, 20:03:37
  */

@@ -1,6 +1,7 @@
 /*
- * File:   newcunittest.c
+ * File:   gtkhelloworld.c
  * Author: Wen, Chifeng <https://sourceforge.net/u/daviesx/profile/>
+ *	   Ou, Zhenghui
  *
  * Created on Jan 31, 2015, 5:56:23 PM
  */
