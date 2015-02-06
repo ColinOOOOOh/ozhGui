@@ -5,6 +5,10 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>include/component.hpp</itemPath>
+        <itemPath>include/container.hpp</itemPath>
+        <itemPath>include/frame.hpp</itemPath>
+        <itemPath>include/main.hpp</itemPath>
         <itemPath>include/platform.hpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -16,6 +20,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/component.cpp</itemPath>
+        <itemPath>src/container.cpp</itemPath>
+        <itemPath>src/frame.cpp</itemPath>
         <itemPath>src/main.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -125,7 +132,21 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <item path="include/component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/container.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/frame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/main.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/platform.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/container.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/frame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -205,7 +226,21 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <item path="include/component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/container.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/frame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/main.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/platform.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/container.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/frame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>

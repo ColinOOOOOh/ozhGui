@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/component.o \
+	${OBJECTDIR}/src/container.o \
+	${OBJECTDIR}/src/frame.o \
 	${OBJECTDIR}/src/main.o
 
 # Test Directory
@@ -64,16 +67,31 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f3
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+${TESTDIR}/TestFiles/f3: ${OBJECTFILES}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f3 ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/component.o: src/component.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/component.o src/component.cpp
+
+${OBJECTDIR}/src/container.o: src/container.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/container.o src/container.cpp
+
+${OBJECTDIR}/src/frame.o: src/frame.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/frame.o src/frame.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -O2 -I. -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -96,20 +114,59 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/win32helloworld.o ${OBJECTFILES:%.o=%_
 ${TESTDIR}/tests/gtkhelloworld.o: tests/gtkhelloworld.c 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/gtkhelloworld.o tests/gtkhelloworld.c
+	$(COMPILE.c) -O2 -Iinclude -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/gtkhelloworld.o tests/gtkhelloworld.c
 
 
 ${TESTDIR}/tests/stdhelloworld.o: tests/stdhelloworld.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/stdhelloworld.o tests/stdhelloworld.cpp
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/stdhelloworld.o tests/stdhelloworld.cpp
 
 
 ${TESTDIR}/tests/win32helloworld.o: tests/win32helloworld.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/win32helloworld.o tests/win32helloworld.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/win32helloworld.o tests/win32helloworld.cpp
 
+
+${OBJECTDIR}/src/component_nomain.o: ${OBJECTDIR}/src/component.o src/component.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/component.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I. -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/component_nomain.o src/component.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/component.o ${OBJECTDIR}/src/component_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/container_nomain.o: ${OBJECTDIR}/src/container.o src/container.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/container.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I. -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/container_nomain.o src/container.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/container.o ${OBJECTDIR}/src/container_nomain.o;\
+	fi
+
+${OBJECTDIR}/src/frame_nomain.o: ${OBJECTDIR}/src/frame.o src/frame.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/src/frame.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I. -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/frame_nomain.o src/frame.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/src/frame.o ${OBJECTDIR}/src/frame_nomain.o;\
+	fi
 
 ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -119,7 +176,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
+	    $(COMPILE.cc) -O2 -I. -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/main_nomain.o;\
 	fi
@@ -138,7 +195,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libozhCore.${CND_DLIB_EXT}
+	${RM} ${TESTDIR}/TestFiles/f3
 
 # Subprojects
 .clean-subprojects:
