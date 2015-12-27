@@ -17,13 +17,13 @@ import service.LoginService;
 
 	public class LoginAction extends ActionSupport
 	{  
-		private UserPo m_user; 
+		private UserPo_old m_user; 
 		private LoginService m_loginService;
-		public UserPo getUser() {
+		public UserPo_old getUser() {
 			return m_user;
 		}
 
-		public void setUser( UserPo user) {
+		public void setUser( UserPo_old user) {
 			this.m_user = user;
 		}
 

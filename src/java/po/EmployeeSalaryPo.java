@@ -1,26 +1,44 @@
 /***********************************************************************
- * Module:  User.java
+ * Module:  EmployeeSalary.java
  * Author:  acer
- * Purpose: Defines the Class User
+ * Purpose: Defines the Class EmployeeSalary
  ***********************************************************************/
 
 import java.util.*;
 
-/** @pdOid 3f2acd0c-fd34-4856-b08f-735e5eee3f6c */
-public class UserPo {
-   /** @pdOid adc236a7-4ebc-49e7-8413-59672f9a87dc */
-   public double userNum;
-   /** @pdOid 9a470f45-fca2-4299-9060-4163e6c22cd5 */
-   public java.lang.String postName;
-   /** @pdOid 668fa787-e56c-44a6-955d-f698b7ad1d71 */
-   public java.lang.String userPassword;
-   /** @pdOid ab596fc6-9671-4eae-951c-fa146210b304 */
-   public java.lang.String userName;
+/** @pdOid bc65f17d-98f5-4004-839c-fe622de5976e */
+public class EmployeeSalaryPo {
+   /** @pdOid e5d6f609-c1aa-4e7c-972e-b40b3159dbe0 */
+   public double baseSalary;
+   /** @pdOid acd2c3fb-dce2-4810-8762-eedb15847a81 */
+   public double transportationAllowance;
+   /** @pdOid eae12e2f-ff71-4030-9178-1b0fabb1a9ca */
+   public double lunchBenefits;
+   /** @pdOid e811c632-e1ef-4469-a462-a41c7fdef493 */
+   public double communicationsAllowance;
+   /** @pdOid 7d23555c-cd9f-4983-a3f9-6f7e6799aed1 */
+   public double oldAgeInsurance;
+   /** @pdOid c425ee53-5b30-43bd-9a5f-dfcf43c1196c */
+   public double medicalInsurance;
+   /** @pdOid 805ca8e7-7e4d-4085-b65b-7a28073d0128 */
+   public double unemploymentInsurance;
+   /** @pdOid bf67dfb2-6dc1-4771-b984-1240a6ffc70b */
+   public double housingAccumulationFund;
+   /** @pdOid f81b572e-7419-4c11-b41c-64e53141944c */
+   public double totalSalary;
+   /** @pdOid 54fba556-492c-4b6a-8ac1-a69fc6b28d62 */
+   public double rewards;
+   /** @pdOid e6f8a474-a8e6-4cec-8715-565c408c7f2d */
+   public double fine;
+   /** @pdOid 1807b7a0-94ba-4c72-abbf-30a787e0b0d0 */
+   public short isConfirm;
+   /** @pdOid 337e0592-41cc-4690-a803-ef2d8284de98 */
+   public java.lang.String publishTime;
+   /** @pdOid 33c20dbe-6417-482e-b8b0-b5ff9ccd1adb */
+   public int employeeSalary;
    
-   /** @pdRoleInfo migr=no name=Employee assc=reference14 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
+   /** @pdRoleInfo migr=no name=Employee assc=reference10 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<EmployeePo> employee;
-   /** @pdRoleInfo migr=no name=UserRole assc=reference8 mult=0..1 side=A */
-   public UserRolePo userRole;
    
    
    /** @pdGenerated default getter */
@@ -55,7 +73,7 @@ public class UserPo {
       if (!this.employee.contains(newEmployee))
       {
          this.employee.add(newEmployee);
-         newEmployee.setUser(this);      
+         newEmployee.setEmployeeSalary(this);      
       }
    }
    
@@ -68,7 +86,7 @@ public class UserPo {
          if (this.employee.contains(oldEmployee))
          {
             this.employee.remove(oldEmployee);
-            oldEmployee.setUser((UserPo)null);
+            oldEmployee.setEmployeeSalary((EmployeeSalaryPo)null);
          }
    }
    
@@ -81,30 +99,7 @@ public class UserPo {
          {
             oldEmployee = (EmployeePo)iter.next();
             iter.remove();
-            oldEmployee.setUser((UserPo)null);
-         }
-      }
-   }
-   /** @pdGenerated default parent getter */
-   public UserRolePo getUserRole() {
-      return userRole;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newUserRole */
-   public void setUserRole(UserRolePo newUserRole) {
-      if (this.userRole == null || !this.userRole.equals(newUserRole))
-      {
-         if (this.userRole != null)
-         {
-            UserRolePo oldUserRole = this.userRole;
-            this.userRole = null;
-            oldUserRole.removeUser(this);
-         }
-         if (newUserRole != null)
-         {
-            this.userRole = newUserRole;
-            this.userRole.addUser(this);
+            oldEmployee.setEmployeeSalary((EmployeeSalaryPo)null);
          }
       }
    }

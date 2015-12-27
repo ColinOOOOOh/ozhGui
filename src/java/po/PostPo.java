@@ -1,26 +1,24 @@
 /***********************************************************************
- * Module:  User.java
+ * Module:  Post.java
  * Author:  acer
- * Purpose: Defines the Class User
+ * Purpose: Defines the Class Post
  ***********************************************************************/
 
 import java.util.*;
 
-/** @pdOid 3f2acd0c-fd34-4856-b08f-735e5eee3f6c */
-public class UserPo {
-   /** @pdOid adc236a7-4ebc-49e7-8413-59672f9a87dc */
-   public double userNum;
-   /** @pdOid 9a470f45-fca2-4299-9060-4163e6c22cd5 */
+/** @pdOid 19b246a1-3d9a-4221-88c3-4269fec3a6d3 */
+public class PostPo {
+   /** @pdOid de2dbee9-e0c5-4215-afc6-326a65b28274 */
+   public java.lang.String postType;
+   /** @pdOid e7e86aa9-b2a4-4303-9f49-aab1e588f2a5 */
    public java.lang.String postName;
-   /** @pdOid 668fa787-e56c-44a6-955d-f698b7ad1d71 */
-   public java.lang.String userPassword;
-   /** @pdOid ab596fc6-9671-4eae-951c-fa146210b304 */
-   public java.lang.String userName;
+   /** @pdOid 4f1d94a5-ceea-4d55-afa6-bd3b9e645e77 */
+   public java.lang.String postTitle;
+   /** @pdOid 519e07cf-c9dd-47aa-bdb4-d492195b3922 */
+   public int postId;
    
-   /** @pdRoleInfo migr=no name=Employee assc=reference14 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
+   /** @pdRoleInfo migr=no name=Employee assc=reference11 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<EmployeePo> employee;
-   /** @pdRoleInfo migr=no name=UserRole assc=reference8 mult=0..1 side=A */
-   public UserRolePo userRole;
    
    
    /** @pdGenerated default getter */
@@ -55,7 +53,7 @@ public class UserPo {
       if (!this.employee.contains(newEmployee))
       {
          this.employee.add(newEmployee);
-         newEmployee.setUser(this);      
+         newEmployee.setPost(this);      
       }
    }
    
@@ -68,7 +66,7 @@ public class UserPo {
          if (this.employee.contains(oldEmployee))
          {
             this.employee.remove(oldEmployee);
-            oldEmployee.setUser((UserPo)null);
+            oldEmployee.setPost((PostPo)null);
          }
    }
    
@@ -81,30 +79,7 @@ public class UserPo {
          {
             oldEmployee = (EmployeePo)iter.next();
             iter.remove();
-            oldEmployee.setUser((UserPo)null);
-         }
-      }
-   }
-   /** @pdGenerated default parent getter */
-   public UserRolePo getUserRole() {
-      return userRole;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newUserRole */
-   public void setUserRole(UserRolePo newUserRole) {
-      if (this.userRole == null || !this.userRole.equals(newUserRole))
-      {
-         if (this.userRole != null)
-         {
-            UserRolePo oldUserRole = this.userRole;
-            this.userRole = null;
-            oldUserRole.removeUser(this);
-         }
-         if (newUserRole != null)
-         {
-            this.userRole = newUserRole;
-            this.userRole.addUser(this);
+            oldEmployee.setPost((PostPo)null);
          }
       }
    }

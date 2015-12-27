@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import po.UserPo;
+import po.UserPo_old;
 
 /**
  *
@@ -20,7 +20,7 @@ import po.UserPo;
 public class LoginDao {
 
                 
-                public String checkUser(UserPo user) 
+                public String checkUser(UserPo_old user) 
 		{
                     if(user.getUsername().equals("a")){
                         return "SUCCESS";

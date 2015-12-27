@@ -18,7 +18,7 @@ public class LoginService {
 
     private LoginDao m_loginDao = new LoginDao();
 
-    public String checkUserInfo( UserPo user ) throws SQLException{
+    public String checkUserInfo( UserPo_old user ) throws SQLException{
         return  m_loginDao.checkUser(user);
     }
 }
