@@ -6,6 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd>
 
 
-<bean id="LoginAction" class="action.LoginActon"/>
+<bean id="LoginAction" class="action.LoginAction"/>
 
 </beans>
