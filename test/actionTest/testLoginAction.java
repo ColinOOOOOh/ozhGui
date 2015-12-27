@@ -51,7 +51,7 @@ public class testLoginAction extends UnitTestBase{
      public void test() {
          //MockHttpServletRequest request = new MockHttpServletRequest();
          //MockHttpServletResponse response = new MockHttpServletResponse();
-         LoginAction loginAction = super.getBean("LogicAction");
+         LoginAction loginAction = super.getBean("LoginAction");
          System.out.println(loginAction.getClass().getName());
      }
 }
