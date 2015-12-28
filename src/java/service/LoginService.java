@@ -6,19 +6,12 @@
 
 package service;
 
-import dao.LoginDao;
+import po.UserPo;
+
 import java.sql.*;    //导入JDBC
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.apache.struts2.ServletActionContext;
+public interface LoginService {
+    
+    public String checkUserInfo( UserPo user )throws SQLException ;
 
-import po.*;
-public class LoginService {
-
-    private LoginDao m_loginDao = new LoginDao();
-
-    public String checkUserInfo( UserPo_old user ) throws SQLException{
-        return  m_loginDao.checkUser(user);
-    }
 }
